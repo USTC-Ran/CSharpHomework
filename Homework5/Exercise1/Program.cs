@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exercise2
+namespace Exercise1
 {
     class Program
     {
@@ -149,48 +149,45 @@ namespace Exercise2
             {
                 Console.WriteLine("1:按客户姓名查询\n2:按商品名称查询\n3:按订单号查询\n其他:退出");
                 string type = Console.ReadLine();
-                if (type == "1")
+                foreach (String s in orderList)
                 {
-                    foreach (String s in orderList)
+                    if (type == "1")
                     {
                         Console.WriteLine("请输入姓名：");
                         String name = Console.ReadLine();
                         string[] orderArray = s.Split('-');
-                        if (orderArray[0] == name)
+                        var m = from n in orderList where orderArray[0] == name select n;
+                        foreach (var a in m)
                         {
-                            Console.WriteLine(s);
+                            Console.WriteLine(a);
                         }
                     }
-                }
-                else if (type == "2")
-                {
-                    foreach (String s in orderList)
+                    else if (type == "2")
                     {
                         Console.WriteLine("请输入商品名：");
                         String good = Console.ReadLine();
                         string[] orderArray = s.Split('-');
-                        if (orderArray[1] == good)
+                        var m = from n in orderList where orderArray[1] == good select n;
+                        foreach (var a in m)
                         {
-                            Console.WriteLine(s);
+                            Console.WriteLine(a);
                         }
                     }
-                }
-                else if (type == "3")
-                {
-                    foreach (String s in orderList)
+                    else if (type == "3")
                     {
                         Console.WriteLine("请输入订单号：");
                         String num = Console.ReadLine();
                         string[] orderArray = s.Split('-');
-                        if (orderArray[2] == num)
+                        var m = from n in orderList where orderArray[2] == num select n;
+                        foreach (var a in m)
                         {
-                            Console.WriteLine(s);
+                            Console.WriteLine(a);
                         }
                     }
-                }
-                else
-                {
-                    Console.WriteLine("已经退出\n");
+                    else
+                    {
+                        Console.WriteLine("已经退出\n");
+                    }
                 }
                 creatOrder();
             }
